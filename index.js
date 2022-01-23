@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors')
@@ -16,6 +17,14 @@ app.get('/', (req,res)=>{
 
 app.use('/users',userRoutes)
 
-app.listen(port,() =>{
-    console.log('app running');
-});
+
+mongoose.connect(process.env.MONGODB,{useUnifiedTopology:true})
+.then(()=>{
+    app.listen(port, ()=>{
+        console.log('app running...')
+    })
+})
+
+// app.listen(port,() =>{
+//     console.log('app running');
+// });
