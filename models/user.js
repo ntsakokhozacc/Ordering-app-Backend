@@ -13,7 +13,11 @@ const UserSchema = new mongooose.Schema({
         type:String,
         required:[true,'Please enter a password']
     },
-    services:{
+    password:{
+        type:String,
+        required:[true, 'Please enter your password']
+    },
+    service:{
         type:String,
         required:[true,'Please enter a service']
     },
@@ -27,3 +31,5 @@ const UserSchema = new mongooose.Schema({
     }
 
 })
+
+module.exports = mongooose.model('User', UserSchema)
